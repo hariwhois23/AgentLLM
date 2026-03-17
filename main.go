@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	app := &cli.Command{
+	app := &cli.App{
 		Name:  "Healthcheck",
 		Usage: "instead of ping",
 		Flags: []cli.Flag{
@@ -19,7 +19,7 @@ func main() {
 				Required: true,
 			},
 			&cli.StringFlag{
-				Name:     "Port",
+				Name:     "port",
 				Aliases:  []string{"p"},
 				Usage:    "Port number to check",
 				Required: false,
@@ -31,7 +31,7 @@ func main() {
 				port = "80"
 			}
 			status := Check(c.String("domain"), port)
-			fmt.Println("status")
+			fmt.Println(status)
 			return nil
 		},
 	}
